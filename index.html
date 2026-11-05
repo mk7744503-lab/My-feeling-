@@ -1,0 +1,526 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#100b18">
+<title>The Art of Loving You — By Ali</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500&display=swap');
+
+:root{
+ --gold:#e7c697;
+ --pink:#efbfd3;
+ --white:#fff5f6;
+ --muted:#c6b6c7;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;min-height:100vh;
+ color:var(--white);
+ background:
+ radial-gradient(ellipse at 50% 0%,#442842 0%,transparent 48%),
+ radial-gradient(ellipse at 0% 100%,#24162d 0%,transparent 48%),
+ #100b18;
+ font-family:Montserrat,sans-serif;
+ overflow-x:hidden;
+}
+#stars{position:fixed;inset:0;pointer-events:none;overflow:hidden}
+.star{
+ position:absolute;width:2px;height:2px;border-radius:50%;
+ background:#fff;opacity:.5;
+ animation:twinkle 3s infinite alternate;
+}
+@keyframes twinkle{to{opacity:.1;transform:scale(.5)}}
+#app{
+ position:relative;z-index:1;
+ width:min(700px,92%);min-height:100vh;
+ margin:auto;padding:35px 0 100px;
+ display:flex;flex-direction:column;justify-content:center;
+}
+.top{text-align:center;margin-bottom:24px}
+.eyebrow{
+ font-size:9px;letter-spacing:4px;
+ color:var(--gold);text-transform:uppercase;
+}
+h1,h2,.serif{
+ font-family:'Cormorant Garamond',serif;font-weight:400;
+}
+h1{font-size:clamp(50px,12vw,82px);line-height:.9;margin:24px 0}
+h1 em,.accent{color:var(--pink)}
+h2{font-size:clamp(39px,9vw,59px);line-height:1;margin:17px 0 22px}
+.panel{
+ border:1px solid #e7c69745;
+ background:linear-gradient(145deg,#ffffff0d,#ffffff04);
+ border-radius:24px;
+ padding:clamp(25px,6vw,45px);
+ text-align:center;
+ box-shadow:0 25px 80px #0007;
+ backdrop-filter:blur(12px);
+}
+.number{font-size:9px;letter-spacing:4px;color:var(--gold)}
+.copy{
+ color:#e8dce6;font-size:14px;font-weight:300;
+ line-height:2.05;white-space:pre-line;
+}
+.line{width:65px;height:1px;background:var(--gold);margin:24px auto}
+.actions{
+ display:flex;justify-content:center;gap:11px;
+ flex-wrap:wrap;margin-top:27px;
+}
+button{
+ color:var(--white);background:transparent;
+ border:1px solid #e7c69788;border-radius:35px;
+ padding:13px 20px;cursor:pointer;
+ font-family:Montserrat,sans-serif;
+ font-size:9px;letter-spacing:1.5px;
+ transition:.25s;
+}
+button:hover{background:#e7c69718;transform:translateY(-2px)}
+button.primary{
+ color:#211522;background:linear-gradient(110deg,#d5ae7c,#f1d8b7);
+ border:0;font-weight:500;
+}
+button:disabled{opacity:.25;cursor:not-allowed;transform:none}
+.hidden{display:none!important}
+.progress-info{
+ display:flex;justify-content:space-between;
+ color:var(--muted);font-size:9px;letter-spacing:2px;
+ margin-top:30px;
+}
+.progress{height:2px;background:#ffffff20;margin-top:10px}
+.fill{height:100%;background:var(--gold);width:0;transition:width .5s}
+.secret{
+ display:none;margin-top:25px;padding-top:22px;
+ border-top:1px solid #e7c69740;
+ color:var(--pink);font-family:'Cormorant Garamond',serif;
+ font-size:27px;font-style:italic;line-height:1.5;
+}
+.secret.show{display:block;animation:reveal .8s ease}
+@keyframes reveal{
+ from{opacity:0;transform:translateY(12px)}
+ to{opacity:1;transform:none}
+}
+.special-list{margin-top:22px;text-align:left}
+.reason{
+ border:1px solid #e7c69738;border-radius:12px;
+ padding:13px 15px;margin:9px 0;
+ font-family:'Cormorant Garamond',serif;
+ font-size:21px;color:#f3dce7;
+ animation:reveal .5s ease;
+}
+.reason.locked{color:#8e7e8d;opacity:.55}
+.final-title{
+ font-size:clamp(55px,13vw,88px);
+ color:var(--pink);line-height:.9;
+}
+#status{font-size:9px;color:var(--gold);letter-spacing:2px;margin-top:20px}
+#musicBar{
+ position:fixed;z-index:5;bottom:13px;left:50%;
+ transform:translateX(-50%);
+ display:flex;align-items:center;gap:10px;
+ background:#1b1322ed;border:1px solid #e7c69755;
+ border-radius:40px;padding:7px 12px;
+ backdrop-filter:blur(12px);
+}
+#musicBar span{font-size:9px;color:var(--gold);letter-spacing:1px}
+#musicBar button{padding:9px 12px}
+#silence{font-size:9px;letter-spacing:3px;color:var(--gold);margin-top:25px}
+@media(max-width:450px){
+ .panel{padding:25px 19px}
+ .copy{font-size:13px}
+}
+</style>
+</head>
+
+<body>
+<div id="stars"></div>
+
+<audio id="backgroundMusic" src="assets/romantic.mp3" loop preload="auto"></audio>
+<audio id="finalRevealAudio" src="assets/Areshey_Final_Reveal.mp3" preload="auto"></audio>
+
+<main id="app">
+
+<!-- WELCOME -->
+<section id="welcome">
+ <div class="top">
+  <div class="eyebrow">A story made from feelings</div>
+  <h1>The Art of<br><em>Loving You</em></h1>
+  <div class="line"></div>
+  <div class="eyebrow">A PERSONAL JOURNEY BY ALI</div>
+ </div>
+
+ <div class="panel">
+  <div class="number">12 CHAPTERS • ONE HEART</div>
+  <h2>For Areshey.</h2>
+  <p class="copy">There are things I want you to know.
+Things I have felt, imagined and kept inside.
+
+I could have written just one message.
+But some feelings deserve their own journey.
+
+So, this is mine.</p>
+  <div class="actions">
+   <button class="primary" onclick="beginJourney()">BEGIN THE JOURNEY ✦</button>
+  </div>
+  <p class="copy" style="font-size:10px;margin-top:22px">Take your time. Every chapter has a little piece of my heart.</p>
+ </div>
+</section>
+
+<!-- CHAPTERS -->
+<section id="chapters" class="hidden">
+ <div class="top">
+  <div class="eyebrow">The Art of Loving You</div>
+  <div class="eyebrow" style="margin-top:8px">BY ALI</div>
+ </div>
+
+ <div class="panel">
+  <div class="number" id="chapterNumber"></div>
+  <h2 id="chapterTitle"></h2>
+  <p class="copy" id="chapterText"></p>
+
+  <div id="chapterExtra"></div>
+
+  <div class="secret" id="chapterSecret"></div>
+
+  <div class="actions">
+   <button id="secretButton" onclick="revealSecret()">THERE'S MORE I WANT TO SAY ✧</button>
+  </div>
+
+  <div class="progress-info">
+   <span>OUR JOURNEY</span>
+   <span id="chapterCount"></span>
+  </div>
+  <div class="progress"><div class="fill" id="progressFill"></div></div>
+
+  <div class="actions">
+   <button id="backButton" onclick="goBack()">← BACK</button>
+   <button class="primary" id="nextButton" onclick="goNext()">NEXT CHAPTER →</button>
+  </div>
+ </div>
+</section>
+
+<!-- FINAL REVEAL -->
+<section id="finalPage" class="hidden">
+ <div class="top">
+  <div class="eyebrow">THE LAST PAGE • THE REAL FEELING</div>
+ </div>
+ <div class="panel">
+  <div class="number">NO MORE WRITTEN WORDS</div>
+  <div class="final-title serif">Just<br>Listen.</div>
+  <div class="line"></div>
+  <p class="copy">Every chapter brought us here.
+
+Now, instead of reading my feelings,
+you can hear them.
+
+My singing.
+My words.
+My honest confession.
+
+All together. From me to you.</p>
+
+  <div id="silence">♪ THE MUSIC HAS ENDED. THIS MOMENT IS YOURS.</div>
+
+  <div class="actions">
+   <button class="primary" id="playButton" onclick="playFinalReveal()">PLAY MY CONFESSION ♡</button>
+  </div>
+  <div id="status">MADE WITH LOVE — BY ALI</div>
+
+  <div class="actions">
+   <button onclick="backToLastChapter()">← BACK TO CHAPTER 12</button>
+  </div>
+ </div>
+</section>
+
+</main>
+
+<div id="musicBar">
+ <span>♫ BACKGROUND MUSIC</span>
+ <button id="musicButton" onclick="toggleMusic()">PAUSE</button>
+</div>
+
+<script>
+const chapters=[
+{
+ title:"The Beautiful Danger",
+ text:"I don't know exactly when it started.\nMaybe it was a conversation. Maybe a smile. Maybe something I cannot even explain.\n\nBut slowly, you became someone I wanted to know beyond the ordinary.\n\nAnd that is the beautiful danger of feelings: sometimes someone becomes special without even trying.",
+ secret:"I never planned to feel this much. Somehow, my heart found its own reason."
+},
+{
+ title:"Something About You",
+ text:"There is something about you that keeps catching my attention.\n\nIt's not just one thing. It's the way you express yourself, the little details, your personality and the way you make an ordinary moment feel different.\n\nI could keep trying to describe it, but maybe the truth is simpler: I genuinely admire you.",
+ secret:"You don't have to become anyone else to be special in my eyes."
+},
+{
+ title:"The Things I Hide",
+ text:"Sometimes I hold back words.\nNot because I have nothing to say, but because I am still finding the right way to express what I feel.\n\nThere are thoughts I keep to myself, little feelings that stay quietly in my heart.\n\nThis journey is my way of letting some of them out.",
+ secret:"If you could hear every unspoken thought, you would understand why I made this."
+},
+{
+ title:"A Mind Full Of You",
+ text:"You find your way into the most unexpected moments.\n\nA song playing somewhere. A quiet evening. A random thought. Something funny that I wish I could share with you.\n\nAnd suddenly, there you are again, in my mind.",
+ secret:"Some people become a thought you never get tired of returning to."
+},
+{
+ title:"The Way I Want You",
+ text:"I want to express my feelings without pretending to be someone I am not.\n\nI want the playful conversations, the teasing, the laughter and the moments where we can simply be ourselves.\n\nI want something genuine, where both people feel comfortable being honest.",
+ secret:"I don't want a perfect version of you. I want to appreciate the real you."
+},
+{
+ title:"A Little Jealousy",
+ text:"I won't pretend I never feel jealous.\nSometimes I do. A little.\n\nBut I know that caring about someone does not mean controlling them. Your freedom, your comfort and your choices matter.\n\nI want my feelings to make you feel appreciated, never restricted.",
+ secret:"I can be a little jealous and still respect your whole world."
+},
+{
+ title:"The Things I Imagine",
+ text:"Sometimes I imagine simple moments.\n\nA conversation that goes on longer than expected. A laugh that makes everything lighter. A day filled with little memories.\n\nNot a demand. Not an expectation. Just beautiful possibilities that cross my mind.",
+ secret:"If life gives us those moments, I hope we both enjoy them."
+},
+{
+ title:"No More Hiding",
+ text:"I have spent enough time trying to find perfect words.\n\nMaybe I don't need perfect sentences. Maybe I just need to be honest.\n\nI like you. I admire you. And I want you to understand that these feelings are real.",
+ secret:"This time, I don't want my feelings to remain hidden behind silence."
+},
+{
+ title:"If You Could See My Heart",
+ text:"Imagine if you could see the feelings behind every little message.\n\nThe care, the excitement, the thoughts I never sent, and the things I wanted to tell you but couldn't quite put into words.\n\nThis is only a glimpse of what I carry inside.",
+ secret:"I am showing you my heart, not asking you to carry it for me."
+},
+{
+ title:"Every Little Reason",
+ text:"There isn't always one big reason to care about someone.\n\nSometimes it is a collection of little things. A smile. A conversation. A quality. A moment. A feeling.\n\nI wanted to put those little reasons together, one by one.",
+ secret:"Twenty little reasons. And still, words can never explain everything."
+},
+{
+ title:"Before You Hear Me",
+ text:"We have reached the quietest part of this journey.\n\nThe words are slowing down. The background music is fading. There is nothing more to hide behind.\n\nThe next part will not be another written paragraph.\n\nIt will be my own voice.",
+ secret:"Take a breath. The final chapter is waiting."
+},
+{
+ title:"The Unfiltered Confession",
+ text:"This is where I stop trying to make every sentence perfect.\n\nI have written, imagined and expressed what I could through these chapters.\n\nBut there are things I want you to hear directly from me.\n\nWhen you are ready, turn the final page.",
+ secret:"No performance. No pressure. Just my voice and my honest feelings."
+}
+];
+
+const reasons=[
+"Your smile.",
+"The way you express yourself.",
+"Your personality.",
+"Your little habits.",
+"Your sense of humour.",
+"Your way of thinking.",
+"Your expressions.",
+"The way you communicate.",
+"Your individuality.",
+"Your kindness.",
+"Your playful side.",
+"Your honesty.",
+"The little things you notice.",
+"The way you make me smile.",
+"Your thoughtful moments.",
+"The way you are yourself.",
+"The conversations we share.",
+"The memories we create.",
+"The person you are becoming.",
+"And simply, you."
+];
+
+let currentChapter=0;
+let secretOpened=false;
+let reasonUnlocked=0;
+let fading=false;
+
+const bg=document.getElementById("backgroundMusic");
+const finalAudio=document.getElementById("finalRevealAudio");
+
+function createStars(){
+ const layer=document.getElementById("stars");
+ for(let i=0;i<65;i++){
+  const s=document.createElement("span");
+  s.className="star";
+  s.style.left=Math.random()*100+"%";
+  s.style.top=Math.random()*100+"%";
+  s.style.animationDelay=Math.random()*4+"s";
+  layer.appendChild(s);
+ }
+}
+
+function beginJourney(){
+ document.getElementById("welcome").classList.add("hidden");
+ document.getElementById("chapters").classList.remove("hidden");
+ bg.volume=.48;
+ bg.play().then(()=>{
+  document.getElementById("musicButton").textContent="PAUSE";
+ }).catch(()=>{});
+ renderChapter();
+}
+
+function renderChapter(){
+ const c=chapters[currentChapter];
+ document.getElementById("chapterNumber").textContent=
+ "CHAPTER "+String(currentChapter+1).padStart(2,"0")+" / 12";
+ document.getElementById("chapterTitle").textContent=c.title;
+ document.getElementById("chapterText").textContent=c.text;
+ document.getElementById("chapterSecret").textContent=c.secret;
+ document.getElementById("chapterSecret").classList.remove("show");
+ document.getElementById("secretButton").classList.remove("hidden");
+ document.getElementById("secretButton").textContent="THERE'S MORE I WANT TO SAY ✧";
+ document.getElementById("chapterExtra").innerHTML="";
+ secretOpened=false;
+
+ document.getElementById("chapterCount").textContent=(currentChapter+1)+" / 12";
+ document.getElementById("progressFill").style.width=((currentChapter+1)/12*100)+"%";
+ document.getElementById("backButton").disabled=currentChapter===0;
+ document.getElementById("nextButton").textContent=
+ currentChapter===11?"OPEN THE FINAL REVEAL ♡":"NEXT CHAPTER →";
+
+ if(currentChapter===9)showReasons();
+}
+
+function revealSecret(){
+ if(secretOpened)return;
+ secretOpened=true;
+ document.getElementById("chapterSecret").classList.add("show");
+ document.getElementById("secretButton").classList.add("hidden");
+}
+
+function showReasons(){
+ const area=document.getElementById("chapterExtra");
+ area.innerHTML=
+ '<div class="line"></div>'+
+ '<div class="number">20 LITTLE REASONS</div>'+
+ '<p class="copy">Open them one at a time.</p>'+
+ '<div class="special-list" id="reasonList"></div>'+
+ '<div class="actions"><button class="primary" id="reasonButton" onclick="unlockReason()">UNLOCK REASON 1 ✦</button></div>';
+ reasonUnlocked=0;
+ drawReasons();
+}
+
+function drawReasons(){
+ const list=document.getElementById("reasonList");
+ list.innerHTML=reasons.map((reason,i)=>{
+  if(i<reasonUnlocked){
+   return '<div class="reason">'+String(i+1).padStart(2,"0")+' — '+reason+'</div>';
+  }
+  return '<div class="reason locked">'+String(i+1).padStart(2,"0")+' — A reason waiting to be discovered</div>';
+ }).join("");
+
+ const btn=document.getElementById("reasonButton");
+ if(reasonUnlocked===20){
+  btn.textContent="ALL 20 REASONS UNLOCKED ♡";
+  btn.disabled=true;
+ }else{
+  btn.textContent="UNLOCK REASON "+(reasonUnlocked+1)+" ✦";
+ }
+}
+
+function unlockReason(){
+ if(reasonUnlocked>=20)return;
+ reasonUnlocked++;
+ drawReasons();
+}
+
+function fadeBackground(){
+ if(fading)return Promise.resolve();
+ if(bg.paused||bg.volume<=0){
+  bg.pause();
+  return Promise.resolve();
+ }
+ fading=true;
+ return new Promise(resolve=>{
+  const startingVolume=bg.volume;
+  const duration=4000;
+  const interval=100;
+  let elapsed=0;
+  const timer=setInterval(()=>{
+   elapsed+=interval;
+   bg.volume=Math.max(0,startingVolume*(1-elapsed/duration));
+   if(elapsed>=duration){
+    clearInterval(timer);
+    bg.pause();
+    bg.currentTime=0;
+    bg.volume=.48;
+    document.getElementById("musicButton").textContent="PLAY";
+    fading=false;
+    resolve();
+   }
+  },interval);
+ });
+}
+
+async function goNext(){
+ const btn=document.getElementById("nextButton");
+ if(currentChapter===10){
+  btn.disabled=true;
+  btn.textContent="A MOMENT OF SILENCE...";
+  await fadeBackground();
+  currentChapter=11;
+  renderChapter();
+  window.scrollTo({top:0,behavior:"smooth"});
+  return;
+ }
+ if(currentChapter===11){
+  document.getElementById("chapters").classList.add("hidden");
+  document.getElementById("finalPage").classList.remove("hidden");
+  bg.pause();
+  bg.currentTime=0;
+  window.scrollTo({top:0,behavior:"smooth"});
+  return;
+ }
+ currentChapter++;
+ renderChapter();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function goBack(){
+ if(currentChapter<=0)return;
+ currentChapter--;
+ renderChapter();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function toggleMusic(){
+ if(bg.paused){
+  bg.play().then(()=>{
+   document.getElementById("musicButton").textContent="PAUSE";
+  }).catch(()=>{});
+ }else{
+  bg.pause();
+  document.getElementById("musicButton").textContent="PLAY";
+ }
+}
+
+function playFinalReveal(){
+ bg.pause();
+ bg.currentTime=0;
+ finalAudio.play().then(()=>{
+  document.getElementById("status").textContent="PLAYING — FROM MY HEART ♡";
+  document.getElementById("playButton").textContent="PLAY AGAIN ↻";
+ }).catch(()=>{
+  document.getElementById("status").textContent="PLEASE CHECK THE FINAL AUDIO FILE";
+ });
+}
+
+finalAudio.addEventListener("ended",()=>{
+ document.getElementById("status").textContent="THANK YOU FOR LISTENING ♡";
+ document.getElementById("playButton").textContent="REPLAY MY CONFESSION ↻";
+});
+
+function backToLastChapter(){
+ finalAudio.pause();
+ finalAudio.currentTime=0;
+ document.getElementById("finalPage").classList.add("hidden");
+ document.getElementById("chapters").classList.remove("hidden");
+ currentChapter=11;
+ renderChapter();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+createStars();
+</script>
+</body>
+</html>
